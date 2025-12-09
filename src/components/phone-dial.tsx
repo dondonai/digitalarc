@@ -24,7 +24,7 @@ const keypad = [
 const IPhoneDialer: React.FC<DialerProps> = ({ number }) => {
   return (
     // <div className="flex min-h-screen w-full max-w-md items-center justify-center rounded-3xl bg-linear-to-b from-white via-neutral-50 to-neutral-100 p-6 text-white md:min-h-[80vh]">
-    <div className="flex min-h-screen w-full max-w-sm mx-auto md:mx-0 items-center justify-center rounded-3xl p-2 sm:p-6 text-white md:min-h-[80vh]">
+    <div className="flex min-h-[80vh] w-full max-w-sm mx-auto md:mx-0 items-center justify-center rounded-3xl p-2 sm:p-6 text-white md:min-h-[80vh]">
       <div className="w-full max-w-sm rounded-3xl bg-linear-to-b from-neutral-50/80 to-white/60 p-6 shadow-2xl ring-1 ring-black/5">
         <div className="mb-6 text-center">
           <p className="text-neutral-600 text-sm">Enter Number</p>

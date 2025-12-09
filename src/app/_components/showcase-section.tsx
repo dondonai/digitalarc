@@ -16,12 +16,13 @@ interface IProps {
   title: string;
   data: {
     image: string;
+    description: string;
   }[];
 }
 
 function ShowcaseSection({ title, data }: IProps) {
   return (
-    <div className="@container space-y-4">
+    <div className="@container w-full max-w-6xl mx-auto space-y-2">
       <h2 className="p-4 text-2xl font-semibold font-heading bg-primary text-accent">
         {title}
       </h2>
@@ -30,20 +31,31 @@ function ShowcaseSection({ title, data }: IProps) {
         opts={{
           align: "center",
           loop: true,
+          // breakpoints: {
+          //   "(min-width: 640px)": {
+          //     align: "center",
+          //   },
+          //   "(min-width: 768px)": {
+          //     align: "center",
+          //   },
+          //   "(min-width: 1024px)": {
+          //     align: "center",
+          //   },
+          // },
         }}
       >
-        <CarouselContent className="pl-2">
+        <CarouselContent className="">
           {data.map((item, index) => (
             <CarouselItem
-              className="relative basis-1/2 pl-1 rounded-lg md:basis-1/3 "
+              className="relative basis-1/2 rounded-lg md:basis-1/3 "
               key={`${index}`}
             >
               <div className="p-1">
                 <Card className="py-0 overflow-hidden">
-                  <CardContent className="flex flex-col justify-end h-[350px] relative p-6">
-                    {/* <h3 className="relative z-20 font-bold font-heading text-2xl leading-none text-accent">
-                      {hero.title}
-                    </h3> */}
+                  <CardContent className="flex flex-col justify-start h-[350px] relative p-6">
+                    <h3 className="relative z-20 font-bold font-heading text-2xl leading-none text-accent">
+                      {item.description}
+                    </h3>
                     <div className="absolute aspect-auto left-0 top-0 h-[350px] w-full">
                       <Image
                         alt={title}
@@ -53,7 +65,7 @@ function ShowcaseSection({ title, data }: IProps) {
                         src={item.image}
                         // unoptimized
                       />
-                      {/* <div className="absolute top-0 left-0 h-full w-full bg-linear-to-t from-black to-transparent" /> */}
+                      <div className="absolute top-0 left-0 h-full w-full bg-linear-to-b from-black to-transparent" />
                       {/* <div className="absolute top-0 left-0 hidden h-full w-full bg-linear-to-r from-primary to-transparent md:block" /> */}
                     </div>
                   </CardContent>

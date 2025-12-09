@@ -9,13 +9,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: "https://digitalarkprint.com/about",
+      url: "https://digitalarkprint.com/services",
+      lastModified: new Date(),
+      changeFrequency: "never",
+      priority: 0.8,
+    },
+    {
+      url: "https://digitalarkprint.com/products",
       lastModified: new Date(),
       changeFrequency: "never",
       priority: 0.8,
     },
     {
       url: "https://digitalarkprint.com/contact",
+      lastModified: new Date(),
+      changeFrequency: "never",
+      priority: 0.8,
+    },
+    {
+      url: "https://digitalarkprint.com/privacy-policy",
       lastModified: new Date(),
       changeFrequency: "never",
       priority: 0.8,

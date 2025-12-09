@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import CTASection from "./_components/cta-section";
 import HeroSection from "./_components/hero-section";
 import {
   idLanyards,
@@ -45,6 +47,7 @@ export default function Home() {
       <ShowcaseSection title="T-Shirt Printing" data={tshirts} />
       <ShowcaseSection title="Net Caps" data={netcaps} />
       <ShowcaseSection title="Wristlets" data={wristlets} />
+      <CTASection />
     </div>
   );
 }

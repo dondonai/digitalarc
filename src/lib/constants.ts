@@ -32,6 +32,6 @@ export const NAVIGATION_LINKS = [
     url: "/services" as const,
     icon: BicepsFlexedIcon,
   },
-  { title: "About", url: "/about" as const, icon: IdCardIcon },
+  // { title: "About", url: "/about" as const, icon: IdCardIcon },
   { title: "Contact", url: "/contact" as const, icon: PhoneCallIcon },
 ];
