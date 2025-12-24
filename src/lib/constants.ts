@@ -15,7 +15,7 @@ export const SITE_URL = "https://digitalarcprint.com";
 export const SITE_EMAIL = "arcdigitalprinting@gmail.com";
 export const SITE_SOCIALS = {
   facebook: "https://www.facebook.com/Dgital.Arc",
-  instagram: "https://www.instagram.com/digitalarcprint",
+  instagram: "https://www.instagram.com/arcdigitalprint/",
   tiktok: "https://vt.tiktok.com/ZSH3D8R6ofbjN-lLENt",
   shoppee: "https://s.shopee.ph/6KxEFVG4Ag",
 };

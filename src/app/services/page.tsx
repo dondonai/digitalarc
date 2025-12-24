@@ -28,10 +28,11 @@ const ServicesPage = () => {
   return (
     <div className="@container py-8 px-4 w-full space-y-8 max-w-6xl mx-auto">
       <div className="flex flex-col gap-4">
-        <h1 className="font-bold text-2xl font-heading">Our Services</h1>
-        <p>
-          Welcome to the services page. Here we offer a variety of services to
-          meet your needs.
+        <h1 className="font-bold text-2xl text-muted-foreground font-heading">
+          Our Services
+        </h1>
+        <p className="font-heading">
+          We customize a variety of products to meet your needs.
         </p>
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">

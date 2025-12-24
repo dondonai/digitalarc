@@ -23,7 +23,7 @@ interface IProps {
 function ShowcaseSection({ title, data }: IProps) {
   return (
     <div className="@container w-full max-w-6xl mx-auto space-y-2">
-      <h2 className="p-4 text-2xl font-semibold font-heading bg-primary text-accent">
+      <h2 className="p-4 text-2xl lg:rounded-xl font-semibold font-heading bg-primary text-accent">
         {title}
       </h2>
       <Carousel
