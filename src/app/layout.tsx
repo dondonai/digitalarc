@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Lato, Poppins } from "next/font/google";
 import "./globals.css";
+import { Suspense } from "react";
 import SiteHeader from "@/components/header";
 import { AppSidebar } from "@/components/sidebar/app-sidebar";
 import SiteFooter from "@/components/site-footer";
+import TawkChat from "@/components/tawk.io";
 import { SidebarProvider } from "@/components/ui/sidebar";
 
 const poppinsSans = Poppins({
@@ -114,6 +116,9 @@ export default function RootLayout(props: LayoutProps<"/">) {
             <SiteHeader />
             <main className="@container/main mb-8 mx-auto w-full">
               {props.children}
+              <Suspense>
+                <TawkChat />
+              </Suspense>
             </main>
             <SiteFooter />
           </div>

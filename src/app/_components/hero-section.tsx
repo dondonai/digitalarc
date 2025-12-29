@@ -56,22 +56,28 @@ function HeroSection() {
               <h3 className="font-bold font-heading text-2xl leading-none md:text-4xl lg:max-w-lg">
                 {hero.title}
               </h3>
-              {hero.page ? (
+              {hero.newTab ? (
                 <a
                   className={buttonVariants({
                     className: "uppercase font-semibold",
                     size: "lg",
                   })}
-                  href={hero.page}
-                  rel="noopener noreferrer"
-                  target="_blank"
+                  href={hero.social}
+                  rel={"noopener noreferrer"}
+                  target={"_blank"}
                 >
-                  <PhoneCallIcon /> {hero.description}
+                  {hero.uri && <PhoneCallIcon />} {hero.description}
                 </a>
               ) : (
-                <p className="font-poppins text-muted-foreground italic">
-                  {hero.description}
-                </p>
+                <Link
+                  className={buttonVariants({
+                    className: "uppercase font-semibold",
+                    size: "lg",
+                  })}
+                  href={hero.uri}
+                >
+                  {hero.uri && <PhoneCallIcon />} {hero.description}
+                </Link>
               )}
             </div>
             <div className="absolute aspect-auto h-[70vh] w-full md:right-0 md:w-1/2">
