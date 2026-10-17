@@ -1,7 +1,8 @@
 "use client";
 
-import Autoplay from "embla-carousel-autoplay";
+import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -10,7 +11,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { heroData } from "./hero-data";
 
 interface IProps {
   title: string;
@@ -22,64 +22,53 @@ interface IProps {
 
 function ShowcaseSection({ title, data }: IProps) {
   return (
-    <div className="@container w-full max-w-6xl mx-auto space-y-2">
-      <h2 className="p-4 text-2xl lg:rounded-xl font-semibold font-heading bg-primary text-accent">
-        {title}
-      </h2>
+    <section aria-label={title} className="@container container-page space-y-6">
+      <div className="flex flex-wrap items-end justify-between gap-2">
+        <h2 className="font-bold font-heading text-2xl md:text-3xl">{title}</h2>
+        <Link
+          className="inline-flex items-center gap-1 font-semibold text-primary text-sm hover:underline"
+          href="/services"
+        >
+          Explore services
+          <ArrowRightIcon className="size-4" />
+        </Link>
+      </div>
+
       <Carousel
-        className="w-full max-w-6xl mx-auto"
-        opts={{
-          align: "center",
-          loop: true,
-          // breakpoints: {
-          //   "(min-width: 640px)": {
-          //     align: "center",
-          //   },
-          //   "(min-width: 768px)": {
-          //     align: "center",
-          //   },
-          //   "(min-width: 1024px)": {
-          //     align: "center",
-          //   },
-          // },
-        }}
+        aria-label={`${title} showcase`}
+        className="w-full"
+        opts={{ align: "start", loop: true }}
       >
-        <CarouselContent className="">
+        <CarouselContent>
           {data.map((item, index) => (
             <CarouselItem
-              className="relative basis-1/2 rounded-lg md:basis-1/3 "
-              key={`${index}`}
+              className="basis-[85%] sm:basis-1/2 lg:basis-1/3"
+              key={`${title}-${index}`}
             >
-              <div className="p-1">
-                <Card className="py-0 overflow-hidden">
-                  <CardContent className="flex flex-col justify-start h-[350px] relative p-6">
-                    <h3 className="relative z-20 font-bold font-heading text-2xl leading-none text-accent">
+              <Card className="group h-full overflow-hidden rounded-2xl py-0 ring-1 ring-border">
+                <CardContent className="relative h-[320px] p-0 sm:h-[360px]">
+                  <Image
+                    alt={item.description || title}
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 640px) 85vw, (max-width: 1024px) 50vw, 33vw"
+                    src={item.image}
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/20 to-transparent" />
+                  {item.description ? (
+                    <p className="absolute inset-x-0 bottom-0 z-10 p-5 font-heading font-semibold text-lg text-white leading-tight">
                       {item.description}
-                    </h3>
-                    <div className="absolute aspect-auto left-0 top-0 h-[350px] w-full">
-                      <Image
-                        alt={title}
-                        className="h-full w-full object-cover object-center"
-                        fill
-                        // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        src={item.image}
-                        // unoptimized
-                      />
-                      <div className="absolute top-0 left-0 h-full w-full bg-linear-to-b from-black to-transparent" />
-                      {/* <div className="absolute top-0 left-0 hidden h-full w-full bg-linear-to-r from-primary to-transparent md:block" /> */}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* <div className="absolute top-0 left-0 hidden h-full w-full bg-linear-to-r from-black to-transparent md:block" /> */}
+                    </p>
+                  ) : null}
+                </CardContent>
+              </Card>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-8" />
-        <CarouselNext className="right-8" />
+        <CarouselPrevious className="left-2 hidden border-0 bg-background/80 backdrop-blur hover:bg-background sm:inline-flex" />
+        <CarouselNext className="right-2 hidden border-0 bg-background/80 backdrop-blur hover:bg-background sm:inline-flex" />
       </Carousel>
-    </div>
+    </section>
   );
 }
 

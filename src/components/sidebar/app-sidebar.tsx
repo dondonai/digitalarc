@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ModeToggle from "@/components/mode-toggle";
 import MainNav from "@/components/sidebar/main-nav";
 import {
   Sidebar,
@@ -25,15 +26,15 @@ export function AppSidebar() {
               alt="Digital Arc"
               className="h-full w-full object-cover object-center"
               fill
+              sizes="56px"
               src="/logo.png"
-              unoptimized
             />
           </Link>
           <div>
-            <h1 className="wrap-break-word font-bold font-heading text-2xl text-primary uppercase leading-6 tracking-none">
+            <p className="wrap-break-word font-bold font-heading text-2xl text-primary uppercase leading-6 tracking-none">
               {SITE_TITLE}
-            </h1>
-            <p className="text-primary/50 font-semibold text-xs italic">
+            </p>
+            <p className="text-primary/70 font-semibold text-xs italic">
               {SITE_TAGLINE}
             </p>
           </div>
@@ -49,7 +50,14 @@ export function AppSidebar() {
         </SidebarGroup>
         <SidebarGroup />
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <div className="flex items-center justify-between gap-2 px-2 py-1">
+          <span className="font-medium text-muted-foreground text-xs">
+            Appearance
+          </span>
+          <ModeToggle />
+        </div>
+      </SidebarFooter>
     </Sidebar>
   );
 }

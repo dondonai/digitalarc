@@ -1,82 +1,79 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Lato, Poppins } from "next/font/google";
+import { Lato, Poppins } from "next/font/google";
 import "./globals.css";
-import { Suspense } from "react";
+import ChatLauncher from "@/components/chat-launcher";
 import SiteHeader from "@/components/header";
 import { AppSidebar } from "@/components/sidebar/app-sidebar";
 import SiteFooter from "@/components/site-footer";
-import TawkChat from "@/components/tawk.io";
+import { ThemeProvider } from "@/components/theme-provider";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import {
+  SITE_DESCRIPTION,
+  SITE_TAGLINE,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/lib/constants";
 
 const poppinsSans = Poppins({
   variable: "--font-poppins-sans",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "600", "700"],
+  display: "swap",
 });
 
 const latoSans = Lato({
   variable: "--font-lato-sans",
   subsets: ["latin"],
   weight: ["400", "700"],
+  display: "swap",
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const SITE_NAME = `${SITE_TITLE} Print`;
+const OG_IMAGE =
+  "https://storage.enfenetydev.com/wp-content/uploads/2025/12/digitalarc-contact-02.jpg";
 
 export const metadata: Metadata = {
   title: {
-    default: "DigitalArk - Your Digital Solutions Partner",
-    template: "%s | DigitalArk",
+    default: `${SITE_NAME} — Custom Printing Services`,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "DigitalArk provides cutting-edge digital solutions, web development, and technology consulting services to help your business thrive in the digital age.",
+  description: SITE_DESCRIPTION,
   keywords: [
-    "digital solutions",
-    "web development",
-    "technology consulting",
-    "software development",
-    "digital transformation",
+    "custom printing",
+    "t-shirt printing",
+    "ID lanyards",
+    "net caps",
+    "wristlets",
+    "tarpaulin printing",
+    "printing services Philippines",
+    "Digital Arc Print",
   ],
-  manifest: "/manifest.json",
-  authors: [{ name: "DigitalArk" }],
-  creator: "DigitalArk",
-  publisher: "DigitalArk",
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://digitalarkprint.com"
-  ),
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || SITE_URL),
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [{ url: "/icon512_any.png", sizes: "512x512", type: "image/png" }],
+    apple: [{ url: "/icon512_maskable.png", sizes: "512x512" }],
+  },
   openGraph: {
-    title: "DigitalArk - Your Digital Solutions Partner",
-    description:
-      "DigitalArk provides cutting-edge digital solutions, web development, and technology consulting services.",
     url: "/",
-    siteName: "DigitalArk",
+    siteName: SITE_NAME,
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "DigitalArk",
+        url: OG_IMAGE,
+        alt: `${SITE_NAME} — ${SITE_TAGLINE}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DigitalArk - Your Digital Solutions Partner",
-    description:
-      "DigitalArk provides cutting-edge digital solutions, web development, and technology consulting services.",
-    images: ["/logo.png"],
+    images: [OG_IMAGE],
   },
   robots: {
     index: true,
@@ -89,40 +86,48 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-    // yandex: "your-yandex-verification-code",
-    // yahoo: "your-yahoo-verification-code",
-  },
+  // Add verification tokens here once available, e.g.
+  // verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
 };
 
 export default function RootLayout(props: LayoutProps<"/">) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${poppinsSans.variable} ${latoSans.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppinsSans.variable} ${latoSans.variable} font-sans antialiased`}
       >
-        <SidebarProvider
-          defaultOpen={false}
-          style={
-            {
-              // "--sidebar-width": "14rem",
-              // "--sidebar-width-mobile": "10rem",
-            } as React.CSSProperties
-          }
+        <a
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:font-semibold focus:text-primary-foreground focus:text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+          href="#main"
         >
-          <AppSidebar />
-          <div className="@container/wrapper flex min-h-screen w-full flex-col">
-            <SiteHeader />
-            <main className="@container/main mb-8 mx-auto w-full">
-              {props.children}
-              <Suspense>
-                <TawkChat />
-              </Suspense>
-            </main>
-            <SiteFooter />
-          </div>
-        </SidebarProvider>{" "}
+          Skip to content
+        </a>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          disableTransitionOnChange
+          enableSystem
+        >
+          <SidebarProvider
+            defaultOpen={false}
+            style={
+              {
+                // "--sidebar-width": "14rem",
+                // "--sidebar-width-mobile": "10rem",
+              } as React.CSSProperties
+            }
+          >
+            <AppSidebar />
+            <div className="@container/wrapper flex min-h-screen w-full flex-col">
+              <SiteHeader />
+              <main id="main" className="@container/main mb-8 mx-auto w-full">
+                {props.children}
+                <ChatLauncher />
+              </main>
+              <SiteFooter />
+            </div>
+          </SidebarProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

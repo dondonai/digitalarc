@@ -1,36 +1,37 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://digitalarkprint.com",
+      url: SITE_URL,
       lastModified: new Date(),
-      changeFrequency: "never",
+      changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: "https://digitalarkprint.com/services",
+      url: `${SITE_URL}/services`,
       lastModified: new Date(),
-      changeFrequency: "never",
+      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://digitalarkprint.com/products",
+      url: `${SITE_URL}/products`,
       lastModified: new Date(),
-      changeFrequency: "never",
+      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://digitalarkprint.com/contact",
+      url: `${SITE_URL}/contact`,
       lastModified: new Date(),
-      changeFrequency: "never",
-      priority: 0.8,
+      changeFrequency: "yearly",
+      priority: 0.6,
     },
     {
-      url: "https://digitalarkprint.com/privacy-policy",
+      url: `${SITE_URL}/privacy-policy`,
       lastModified: new Date(),
-      changeFrequency: "never",
-      priority: 0.8,
+      changeFrequency: "yearly",
+      priority: 0.3,
     },
   ];
 }

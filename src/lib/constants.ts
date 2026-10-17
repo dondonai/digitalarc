@@ -13,6 +13,7 @@ export const SITE_DESCRIPTION =
 
 export const SITE_URL = "https://digitalarcprint.com";
 export const SITE_EMAIL = "arcdigitalprinting@gmail.com";
+export const SITE_PHONE = "+63 945 1470 492";
 export const SITE_SOCIALS = {
   facebook: "https://www.facebook.com/Dgital.Arc",
   instagram: "https://www.instagram.com/arcdigitalprint/",

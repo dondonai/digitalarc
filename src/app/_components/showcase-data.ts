@@ -1,32 +1,3 @@
-export const showcaseData = [
-  {
-    image:
-      "https://storage.enfenetydev.com/wp-content/uploads/2025/12/premium-cinnamon-rolls-01.jpg",
-    title: "Introducing our NEW Premium Cinnamon Rolls Collection",
-    description:
-      "Soft, fluffy, and overflowing with your favorite toppings. Biscoff",
-  },
-  {
-    image:
-      "https://storage.enfenetydev.com/wp-content/uploads/2025/11/adss-maxim.png",
-    title: "ADSS Cafe is now available on MAXIM App!",
-    description: "Book Now!",
-  },
-  {
-    image:
-      "https://storage.enfenetydev.com/wp-content/uploads/2025/11/services-01.jpg",
-    title:
-      "Cravings for delicious cakes and refreshing drinks? We've got you covered!",
-    description: "Visit us now!",
-  },
-  {
-    image:
-      "https://storage.enfenetydev.com/wp-content/uploads/2025/11/adss-maxim.png",
-    title: "ADSS Cafe is now available on MAXIM App!",
-    description: "Book Now!",
-  },
-];
-
 export const idLanyards = [
   {
     image:
